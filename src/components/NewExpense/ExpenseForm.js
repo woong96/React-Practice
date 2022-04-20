@@ -50,6 +50,9 @@ const ExpenseForm = () => {
     };
 
     console.log(expenseData);
+    setEnteredTitle(''); // 양방향 바인딩
+    setEnteredAmount('');
+    setEnteredDate('');
   };
 
   return (
@@ -57,7 +60,11 @@ const ExpenseForm = () => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={enteredTitle} // 양방향 바인딩
+            onChange={titleChangeHandler}
+          />
           {/* onChange의 장점은 onInput과 비슷하지만 공통적인 이벤트 수신을 보내줌 */}
         </div>
         <div className="new-expense__control">
@@ -66,6 +73,7 @@ const ExpenseForm = () => {
             type="number"
             min="0.01"
             step="0.01"
+            value={enteredAmount}
             onChange={amountChangeHandler}
           />
         </div>
@@ -75,6 +83,7 @@ const ExpenseForm = () => {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            value={enteredDate}
             onChange={dateChangeHandler}
           />
         </div>
